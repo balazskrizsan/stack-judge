@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Repositories;
@@ -32,10 +32,16 @@ namespace StackJudgeEf.Repositories
 
         public void Delete(int companyId)
         {
-            Debug.Write(companyId.ToString());
-            var company = _context.Companies.Single(c => c.Id == companyId);
-            _context.Companies.Remove(company);
-            _context.SaveChanges();
+            try
+            {
+                var company = _context.Companies.Single(c => c.Id == companyId);
+                _context.Companies.Remove(company);
+                _context.SaveChanges();
+            }
+            catch (InvalidOperationException e)
+            {
+                // Log: CompanyId not found: companyId
+            }
         }
     }
 }
