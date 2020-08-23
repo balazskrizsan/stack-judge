@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>StackJudge</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\StackJudge.Core\StackJudge.Core.csproj" />
+          <ProjectReference Include="..\StackJudge.Ef\StackJudge.Ef.csproj" />
+    </ItemGroup>
+
+</Project>

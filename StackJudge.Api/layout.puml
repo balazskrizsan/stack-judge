@@ -1,0 +1,65 @@
+﻿@startuml
+package Ports {
+    package "SJ.Api" {
+        class CompanyApiController
+        object ApiDiSetup
+    }
+    package "SJ.Scheduled" {
+        class CompanyScheduledController
+        object ScheduledDiSetup
+    }
+}
+
+package "SJ.Core" {
+    interface ICompanyService
+    interface ICompanyRepository
+    class CompanyApiService implements ICompanyService
+    class CompanyScheduledService implements ICompanyService
+    class CompanyEntity
+}
+
+package "SJ.Db" {
+    class CompanyRepository implements ICompanyRepository
+}
+
+CompanyApiController --> CompanyApiService
+CompanyApiController <-- CompanyApiService
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyScheduledController --> CompanyScheduledService
+CompanyScheduledController <-- CompanyScheduledService
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyScheduledService --> CompanyRepository
+CompanyScheduledService <-- CompanyRepository
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyApiService --> CompanyRepository
+CompanyApiService <-- CompanyRepository
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyApiController       : HTTP: GET?page=\d+
+CompanyScheduledController : Job
+
+CompanyApiService       : Search(int page)
+CompanyScheduledService : Search()
+
+CompanyRepository : Search(int page, int limit)
+
+ApiDiSetup       : ICompanyService -> CompanyApiService
+ApiDiSetup       : ICompanyRepository -> CompanyRepository
+ScheduledDiSetup : ICompanyService -> CompanyScheduledService
+ScheduledDiSetup : ICompanyRepository -> CompanyRepository
+@enduml

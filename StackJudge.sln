@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackJudge.Api", "StackJudge.Api\StackJudge.Api.csproj", "{24F41F34-7ACA-4A76-B1B6-913EE4A1ACAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackJudge.Ef", "StackJudge.Ef\StackJudge.Ef.csproj", "{E1AC41B1-1DEC-4D8B-A2C6-5BD055C274DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackJudge.Core", "StackJudge.Core\StackJudge.Core.csproj", "{AE97839D-D87D-4209-8210-44A50DC7D82C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24F41F34-7ACA-4A76-B1B6-913EE4A1ACAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F41F34-7ACA-4A76-B1B6-913EE4A1ACAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F41F34-7ACA-4A76-B1B6-913EE4A1ACAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F41F34-7ACA-4A76-B1B6-913EE4A1ACAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1AC41B1-1DEC-4D8B-A2C6-5BD055C274DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1AC41B1-1DEC-4D8B-A2C6-5BD055C274DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1AC41B1-1DEC-4D8B-A2C6-5BD055C274DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1AC41B1-1DEC-4D8B-A2C6-5BD055C274DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE97839D-D87D-4209-8210-44A50DC7D82C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE97839D-D87D-4209-8210-44A50DC7D82C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE97839D-D87D-4209-8210-44A50DC7D82C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE97839D-D87D-4209-8210-44A50DC7D82C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
