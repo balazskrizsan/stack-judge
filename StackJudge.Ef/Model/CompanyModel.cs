@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StackJudgeEf.Model
 {
     [Table("company")]
     public class CompanyModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("id")]
-        public int Id { get; set; }
+        [Column("id"), Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int? Id { get; set; }
         [Column("name")]
         public string Name { get; set; }
         [Column("country")]

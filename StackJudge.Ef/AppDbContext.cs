@@ -3,7 +3,7 @@ using StackJudgeEf.Model;
 
 namespace StackJudgeEf
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<CompanyModel> Companies { get; set; }
 

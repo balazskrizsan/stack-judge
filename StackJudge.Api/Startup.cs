@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StackJudgeCore.Repositories;
-using StackJudgeCore.Services;
+using StackJudgeCore.Company.Repositories;
+using StackJudgeCore.Company.Services;
 using StackJudgeEf;
 using StackJudgeEf.Repositories;
 

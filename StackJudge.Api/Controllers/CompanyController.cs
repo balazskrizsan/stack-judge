@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using StackJudgeCore.Entity;
-using StackJudgeCore.Services;
+using StackJudgeCore.Company.Entities;
+using StackJudgeCore.Company.Requests;
+using StackJudgeCore.Company.Services;
 
 namespace StackJudge.Controllers
 {
@@ -10,12 +10,10 @@ namespace StackJudge.Controllers
     [Route("/company")]
     public class CompanyController : ControllerBase
     {
-        private readonly ILogger<CompanyController> _logger;
         private readonly ICompanyService _companyService;
 
-        public CompanyController(ILogger<CompanyController> logger, ICompanyService companyService)
+        public CompanyController(ICompanyService companyService)
         {
-            _logger = logger;
             _companyService = companyService;
         }
 
@@ -24,6 +22,11 @@ namespace StackJudge.Controllers
         {
             return _companyService.Search();
         }
+
+        [HttpPost]
+        public void Post([FromForm] CompanyPostRequest companyPostRequest)
+        {
+            _companyService.Create(RequestMapperService.MapCompanyPostRequestToEntity(companyPostRequest));
+        }
     }
 }
-    
