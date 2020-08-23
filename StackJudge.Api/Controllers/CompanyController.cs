@@ -30,9 +30,11 @@ namespace StackJudge.Controllers
         }
 
         [HttpDelete, Route("{companyId}")]
-        public void Post(int companyId)
+        public object Delete(int companyId)
         {
             _companyService.Delete(companyId);
+
+            return null;
         }
     }
 }
