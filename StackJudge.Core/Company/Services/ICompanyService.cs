@@ -7,5 +7,6 @@ namespace StackJudgeCore.Company.Services
     {
         public List<Entities.Company> Search();
         void Create(Entities.Company company);
+        void Delete(int companyId);
     }
 }

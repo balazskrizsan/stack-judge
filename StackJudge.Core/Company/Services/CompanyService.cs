@@ -22,5 +22,10 @@ namespace StackJudgeCore.Company.Services
         {
             _companyRepository.Create(company);
         }
+
+        public void Delete(int companyId)
+        {
+            _companyRepository.Delete(companyId);
+        }
     }
 }

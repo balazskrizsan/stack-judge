@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Repositories;
@@ -19,7 +20,6 @@ namespace StackJudgeEf.Repositories
         {
             return _context
                 .Companies
-                .ToList()
                 .Select(company => ModelMapperService.MapCompanyFromModel(company))
                 .ToList();
         }
@@ -27,6 +27,14 @@ namespace StackJudgeEf.Repositories
         public void Create(Company company)
         {
             _context.Companies.Add(ModelMapperService.MapCompanyToModel(company));
+            _context.SaveChanges();
+        }
+
+        public void Delete(int companyId)
+        {
+            Debug.Write(companyId.ToString());
+            var company = _context.Companies.Single(c => c.Id == companyId);
+            _context.Companies.Remove(company);
             _context.SaveChanges();
         }
     }

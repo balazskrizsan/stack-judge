@@ -28,5 +28,11 @@ namespace StackJudge.Controllers
         {
             _companyService.Create(RequestMapperService.MapCompanyPostRequestToEntity(companyPostRequest));
         }
+
+        [HttpDelete, Route("{companyId}")]
+        public void Post(int companyId)
+        {
+            _companyService.Delete(companyId);
+        }
     }
 }
