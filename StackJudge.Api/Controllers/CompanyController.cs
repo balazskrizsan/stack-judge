@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using StackJudge.Builders;
+using StackJudge.Entities;
 using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Requests;
 using StackJudgeCore.Company.Services;
@@ -18,23 +20,34 @@ namespace StackJudge.Controllers
         }
 
         [HttpGet]
-        public List<Company> Get()
+        public ResponseEntity Get()
         {
-            return _companyService.Search();
+            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>
+            {
+                Data = _companyService.Search()
+            };
+
+            return responseEntityBuilder.Build();
         }
 
         [HttpPost]
-        public void Post([FromForm] CompanyPostRequest companyPostRequest)
+        public ResponseEntity Post([FromForm] CompanyPostRequest companyPostRequest)
         {
             _companyService.Create(RequestMapperService.MapCompanyPostRequestToEntity(companyPostRequest));
+
+            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>();
+
+            return responseEntityBuilder.Build();
         }
 
         [HttpDelete, Route("{companyId}")]
-        public object Delete(int companyId)
+        public ResponseEntity Delete(int companyId)
         {
             _companyService.Delete(companyId);
 
-            return null;
+            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>();
+
+            return responseEntityBuilder.Build();
         }
     }
 }
