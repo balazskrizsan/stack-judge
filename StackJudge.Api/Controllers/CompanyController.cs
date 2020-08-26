@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using StackJudge.Builders;
 using StackJudge.Entities;
@@ -35,7 +36,10 @@ namespace StackJudge.Controllers
         {
             _companyService.Create(RequestMapperService.MapCompanyPostRequestToEntity(companyPostRequest));
 
-            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>();
+            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>()
+            {
+                ResponseStatusCode = HttpStatusCode.Created
+            };
 
             return responseEntityBuilder.Build();
         }
