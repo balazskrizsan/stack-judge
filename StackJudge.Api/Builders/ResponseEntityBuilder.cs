@@ -9,7 +9,7 @@ namespace StackJudge.Builders
         public int ErrorCode { get; set; }
         public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
 
-        public ResponseEntity Build()
+        public ResponseEntity<ResponseData<T>> Build()
         {
             bool success = ErrorCode == 0;
 
@@ -18,7 +18,7 @@ namespace StackJudge.Builders
                 Data = Data, Success = success, ErrorCode = ErrorCode, RequestId = "1"
             };
 
-            return new ResponseEntity(data)
+            return new ResponseEntity<ResponseData<T>>(data)
             {
                 StatusCode = StatusCode.GetHashCode()
             };

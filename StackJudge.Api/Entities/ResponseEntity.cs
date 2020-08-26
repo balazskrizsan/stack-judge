@@ -2,11 +2,11 @@
 
 namespace StackJudge.Entities
 {
-    public class ResponseEntity : ObjectResult
+    public class ResponseEntity<T> : ObjectResult
     {
         public int CustomStatusCode { get; set; }
 
-        public ResponseEntity(object value) : base(value)
+        public ResponseEntity(T value) : base(value)
         {
             StatusCode = CustomStatusCode;
         }
