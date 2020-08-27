@@ -9,8 +9,9 @@ namespace StackJudgeCore.Company.Services
             return new Entities.Company
             {
                 Name = companyPostRequest.Name,
-                Country = companyPostRequest.Country,
-                City = companyPostRequest.City
+                AddressId = companyPostRequest.AddressId,
+                CompanySize = companyPostRequest.CompanySize,
+                ItSize = companyPostRequest.ItSize
             };
         }
     }

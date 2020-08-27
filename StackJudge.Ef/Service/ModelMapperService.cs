@@ -1,4 +1,5 @@
-﻿using StackJudgeCore.Company.Entities;
+﻿using System;
+using StackJudgeCore.Company.Entities;
 using StackJudgeEf.Model;
 
 namespace StackJudgeEf.Service
@@ -9,7 +10,11 @@ namespace StackJudgeEf.Service
         {
             return new Company
             {
-                Id = companyModel.Id, Name = companyModel.Name, Country = companyModel.Country, City = companyModel.City
+                Id = companyModel.Id,
+                Name = companyModel.Name,
+                AddressId = companyModel.AddressId,
+                CompanySize = companyModel.CompanySize,
+                ItSize = companyModel.ItSize
             };
         }
 
@@ -17,7 +22,13 @@ namespace StackJudgeEf.Service
         {
             return new CompanyModel
             {
-                Id = company.Id, Name = company.Name, Country = company.Country, City = company.City
+                Id = company.Id,
+                Name = company.Name,
+                AddressId = company.AddressId,
+                CompanySize = company.CompanySize,
+                ItSize = company.ItSize,
+                CreatedAt = DateTime.Now,
+                CreatedBy = 1
             };
         }
     }

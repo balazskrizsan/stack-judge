@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using StackJudgeCore.Company.Repositories;
-using StackJudgeCore.Company.Requests;
 
 namespace StackJudgeCore.Company.Services
 {

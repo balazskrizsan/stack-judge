@@ -2,8 +2,9 @@
 {
     public class CompanyPostRequest
     {
-        public string Name { get; set; }
-        public string Country { get; set; }
-        public string City { get; set; }
+        public string Name        { get; set; }
+        public int    AddressId   { get; set; }
+        public int    CompanySize { get; set; }
+        public int    ItSize      { get; set; }
     }
 }
