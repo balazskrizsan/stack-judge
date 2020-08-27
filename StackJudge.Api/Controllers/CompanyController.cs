@@ -32,11 +32,11 @@ namespace StackJudge.Controllers
         }
 
         [HttpPost]
-        public ResponseEntity<ResponseData<List<Company>>> Post([FromForm] CompanyPostRequest companyPostRequest)
+        public ResponseEntity<ResponseData<object>> Post([FromForm] CompanyPostRequest companyPostRequest)
         {
             _companyService.Create(RequestMapperService.MapCompanyPostRequestToEntity(companyPostRequest));
 
-            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>()
+            var responseEntityBuilder = new ResponseEntityBuilder<object>()
             {
                 ResponseStatusCode = HttpStatusCode.Created
             };
@@ -45,11 +45,11 @@ namespace StackJudge.Controllers
         }
 
         [HttpDelete, Route("{companyId}")]
-        public ResponseEntity<ResponseData<List<Company>>> Delete(int companyId)
+        public ResponseEntity<ResponseData<object>> Delete(int companyId)
         {
             _companyService.Delete(companyId);
 
-            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>();
+            var responseEntityBuilder = new ResponseEntityBuilder<object>();
 
             return responseEntityBuilder.Build();
         }
