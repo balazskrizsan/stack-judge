@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using StackJudge.Entities;
+using StackJudge.ValueObjects;
 
 namespace StackJudge.Builders
 {

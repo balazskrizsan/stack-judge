@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using StackJudgeCore.Company.Requests;
 
 namespace StackJudgeCore.Company.Services
 {

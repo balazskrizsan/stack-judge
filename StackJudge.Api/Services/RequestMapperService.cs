@@ -1,12 +1,13 @@
-﻿using StackJudgeCore.Company.Requests;
+﻿using StackJudgeCore.Company.Entities;
+using StackJudgeCore.Company.Requests;
 
-namespace StackJudgeCore.Company.Services
+namespace StackJudge.Services
 {
     public static class RequestMapperService
     {
-        public static Entities.Company MapCompanyPostRequestToEntity(CompanyPostRequest companyPostRequest)
+        public static Company MapCompanyPostRequestToEntity(CompanyPostRequest companyPostRequest)
         {
-            return new Entities.Company
+            return new Company
             {
                 Name = companyPostRequest.Name,
                 AddressId = companyPostRequest.AddressId,

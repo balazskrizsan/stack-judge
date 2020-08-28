@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace StackJudge.Entities
+namespace StackJudge.ValueObjects
 {
     public class ResponseEntity<T> : ObjectResult
     {

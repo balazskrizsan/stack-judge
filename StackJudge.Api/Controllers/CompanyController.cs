@@ -2,7 +2,8 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using StackJudge.Builders;
-using StackJudge.Entities;
+using StackJudge.ValueObjects;
+using StackJudge.Services;
 using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Requests;
 using StackJudgeCore.Company.Services;

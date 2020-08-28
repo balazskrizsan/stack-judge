@@ -1,4 +1,4 @@
-﻿namespace StackJudge.Entities
+﻿namespace StackJudge.ValueObjects
 {
     public class ResponseData<T>
     {
