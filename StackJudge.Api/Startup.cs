@@ -28,6 +28,9 @@ namespace StackJudge
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
 
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+
             services.AddDbContext<AppDbContext>(option =>
             {
                 option.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));

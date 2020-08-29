@@ -5,7 +5,8 @@ namespace StackJudgeCore.Company.Services
     public interface ICompanyService
     {
         public List<Entities.Company> Search();
-        void Create(Entities.Company company);
+        int Create(Entities.Company company);
+        void Create(Entities.Company company, Entities.Address address);
         void Delete(int companyId);
     }
 }

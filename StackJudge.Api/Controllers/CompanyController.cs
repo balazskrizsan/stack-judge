@@ -2,10 +2,10 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using StackJudge.Builders;
-using StackJudge.ValueObjects;
+using StackJudge.Requests;
 using StackJudge.Services;
+using StackJudge.ValueObjects;
 using StackJudgeCore.Company.Entities;
-using StackJudgeCore.Company.Requests;
 using StackJudgeCore.Company.Services;
 
 namespace StackJudge.Controllers
@@ -33,9 +33,12 @@ namespace StackJudge.Controllers
         }
 
         [HttpPost]
-        public ResponseEntity<ResponseData<object>> Post([FromForm] CompanyPostRequest companyPostRequest)
+        public ResponseEntity<ResponseData<object>> Post([FromForm] CompanyCompositePostRequest compositeRequest)
         {
-            _companyService.Create(RequestMapperService.MapCompanyPostRequestToEntity(companyPostRequest));
+            _companyService.Create(
+                RequestMapperService.MapToEntity(compositeRequest.Company),
+                RequestMapperService.MapToEntity(compositeRequest.Address)
+            );
 
             var responseEntityBuilder = new ResponseEntityBuilder<object>()
             {

@@ -20,14 +20,23 @@ namespace StackJudgeEf.Repositories
         {
             return _context
                 .Companies
-                .Select(company => ModelMapperService.MapCompanyFromModel(company))
+                .Select(company => ModelMapperService.MapFromModel(company))
                 .ToList();
         }
 
-        public void Create(Company company)
+        public int Create(Company company)
         {
-            _context.Companies.Add(ModelMapperService.MapCompanyToModel(company));
+            var newCompany = ModelMapperService.MapToModel(company);
+
+            _context.Companies.Add(newCompany);
             _context.SaveChanges();
+
+            if (newCompany.Id == null)
+            {
+                throw new Exception("User creation exception.");
+            }
+
+            return (int) newCompany.Id;
         }
 
         public void Delete(int companyId)
