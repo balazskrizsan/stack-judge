@@ -5,7 +5,7 @@ namespace StackJudgeCore.Company.Repositories
     public interface ICompanyRepository
     {
         public List<Entities.Company> Search();
-        int Create(Entities.Company company);
-        void Delete(int companyId);
+        public int Create(Entities.Company company);
+        public void Delete(int companyId);
     }
 }

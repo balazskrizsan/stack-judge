@@ -8,6 +8,7 @@ using StackJudgeCore.Company.Repositories;
 using StackJudgeCore.Company.Services;
 using StackJudgeEf;
 using StackJudgeEf.Repositories;
+using StackJudgeEf.Service;
 
 namespace StackJudge
 {
@@ -30,6 +31,8 @@ namespace StackJudge
 
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IAddressRepository, AddressRepository>();
+
+            services.AddScoped<ITransactionRunnerService, TransactionRunnerService>();
 
             services.AddDbContext<AppDbContext>(option =>
             {
