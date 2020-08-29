@@ -42,9 +42,19 @@ namespace StackJudgeCore.Company.Services
         {
             int companyId = Create(company);
 
-            address.CompanyId = companyId;
-            _addressService.Create(address);
-            
+            _addressService.Create(
+                new Address(
+                    null,
+                    companyId,
+                    address.RawAddress,
+                    address.GoogleAddress,
+                    address.PinLong,
+                    address.PinLat,
+                    address.ManualPinLong,
+                    address.ManualPinLat
+                )
+            );
+
             return true;
         }
 

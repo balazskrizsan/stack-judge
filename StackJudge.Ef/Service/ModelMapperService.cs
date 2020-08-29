@@ -6,16 +6,9 @@ namespace StackJudgeEf.Service
 {
     public static class ModelMapperService
     {
-        public static Company MapFromModel(CompanyModel companyModel)
+        public static Company MapFromModel(CompanyModel company)
         {
-            return new Company
-            {
-                Id = companyModel.Id,
-                Name = companyModel.Name,
-                AddressId = companyModel.AddressId,
-                CompanySize = companyModel.CompanySize,
-                ItSize = companyModel.ItSize
-            };
+            return new Company(company.Id, company.Name, company.AddressId, company.CompanySize, company.ItSize);
         }
 
         public static CompanyModel MapToModel(Company company)
@@ -37,7 +30,7 @@ namespace StackJudgeEf.Service
             return new AddressModel
             {
                 Id = address.Id,
-                CompanyId = address.CompanyId,
+                CompanyId = (int) address.CompanyId,
                 RawAddress = address.RawAddress,
                 GoogleAddress = address.GoogleAddress,
                 PinLong = address.PinLong,
