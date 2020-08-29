@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using StackJudgeCore.Company.Entities;
 
 namespace StackJudgeCore.Company.Services
 {
@@ -6,7 +7,7 @@ namespace StackJudgeCore.Company.Services
     {
         public List<Entities.Company> Search();
         int Create(Entities.Company company);
-        void Create(Entities.Company company, Entities.Address address);
+        void Create(Entities.Company company, Address address);
         void Delete(int companyId);
     }
 }

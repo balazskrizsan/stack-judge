@@ -1,4 +1,5 @@
-﻿using StackJudgeCore.Company.Repositories;
+﻿using StackJudgeCore.Company.Entities;
+using StackJudgeCore.Company.Repositories;
 
 namespace StackJudgeCore.Company.Services
 {
@@ -11,7 +12,7 @@ namespace StackJudgeCore.Company.Services
             _addressRepository = addressRepository;
         }
 
-        public void Create(Entities.Address address)
+        public void Create(Address address)
         {
             _addressRepository.Create(address);
         }

@@ -20,24 +20,27 @@ namespace StackJudgeEf.Service
         public T Run<T>(Func<T> workflow)
         {
             T result = default;
-            ExecutionStrategyExtensions.Execute(_context.Database.CreateExecutionStrategy(), () =>
-            {
-                try
+            ExecutionStrategyExtensions.Execute(
+                _context.Database.CreateExecutionStrategy(),
+                () =>
                 {
-                    using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
-                    result = workflow();
-                    scope.Complete();
+                    try
+                    {
+                        using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+                        result = workflow();
+                        scope.Complete();
+                    }
+                    catch (TransactionAbortedException e)
+                    {
+                        _logger.LogError(e, "Commit error");
+                        throw;
+                    }
+                    catch (AggregateException ae)
+                    {
+                        throw ae.Flatten();
+                    }
                 }
-                catch (TransactionAbortedException e)
-                {
-                    _logger.LogError(e, "Commit error");
-                    throw;
-                }
-                catch (AggregateException ae)
-                {
-                    throw ae.Flatten();
-                }
-            });
+            );
             return result;
         }
     }
