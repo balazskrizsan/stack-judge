@@ -30,7 +30,7 @@ namespace StackJudgeEf.Service
                 }
                 catch (TransactionAbortedException e)
                 {
-                    _logger.LogError(e, "TransactionRunnerService: commit error");
+                    _logger.LogError(e, "Commit error");
                     throw;
                 }
                 catch (AggregateException ae)
