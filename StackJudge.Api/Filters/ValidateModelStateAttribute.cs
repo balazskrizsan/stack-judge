@@ -11,30 +11,27 @@ namespace StackJudge.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (!context.ModelState.IsValid)
+            var state = context.ModelState;
+            if (!state.IsValid)
             {
-                if (!context.ModelState.IsValid)
+                var errors = state.Keys
+                    .Where(k => state[k].Errors.Count > 0)
+                    .Select(
+                        k => new
+                        {
+                            propertyName = k,
+                            errorMessage = CollectMessages(state[k].Errors)
+                        }
+                    );
+
+                var responseEntityBuilder = new ResponseEntityBuilder<object>()
                 {
-                    var state = context.ModelState;
-                    var errors = state.Keys
-                        .Where(k => state[k].Errors.Count > 0)
-                        .Select(
-                            k => new
-                            {
-                                propertyName = k,
-                                errorMessage = CollectMessages(state[k].Errors)
-                            }
-                        );
+                    Data = errors,
+                    ErrorCode = 1,
+                    ResponseStatusCode = HttpStatusCode.BadRequest
+                };
 
-                    var responseEntityBuilder = new ResponseEntityBuilder<object>()
-                    {
-                        Data = errors,
-                        ErrorCode = 1,
-                        ResponseStatusCode = HttpStatusCode.BadRequest
-                    };
-
-                    context.Result = responseEntityBuilder.Build();
-                }
+                context.Result = responseEntityBuilder.Build();
             }
         }
 
