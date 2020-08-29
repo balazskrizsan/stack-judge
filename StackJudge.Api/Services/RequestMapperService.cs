@@ -1,6 +1,5 @@
 ﻿using StackJudge.Requests;
 using StackJudgeCore.Company.Entities;
-using StackJudgeCore.Company.Requests;
 
 namespace StackJudge.Services
 {

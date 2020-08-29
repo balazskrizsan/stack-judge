@@ -1,6 +1,4 @@
-﻿using StackJudgeCore.Company.Requests;
-
-namespace StackJudge.Requests
+﻿namespace StackJudge.Requests
 {
     public class CompanyCompositePostRequest
     {

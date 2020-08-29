@@ -1,9 +1,12 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackJudge.Filters;
 using StackJudgeCore.Company.Repositories;
 using StackJudgeCore.Company.Services;
 using StackJudgeEf;
@@ -33,6 +36,17 @@ namespace StackJudge
             services.AddScoped<IAddressRepository, AddressRepository>();
 
             services.AddScoped<ITransactionRunnerService, TransactionRunnerService>();
+            
+            services.AddMvc(options =>
+                {
+                    options.Filters.Add(typeof(ValidateModelStateAttribute));
+                })
+                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             services.AddDbContext<AppDbContext>(
                 option => { option.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")); }
