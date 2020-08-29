@@ -1,35 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using StackJudge.Builders;
 using StackJudge.Requests;
 using StackJudge.Services;
 using StackJudge.ValueObjects;
-using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Services;
 
-namespace StackJudge.Controllers
+namespace StackJudge.Controllers.CompanyController
 {
     [ApiController]
     [Route("/company")]
-    public class CompanyController : ControllerBase
+    public class PostAction
     {
         private readonly ICompanyService _companyService;
 
-        public CompanyController(ICompanyService companyService)
+        public PostAction(ICompanyService companyService)
         {
             _companyService = companyService;
-        }
-
-        [HttpGet]
-        public ResponseEntity<ResponseData<List<Company>>> Get()
-        {
-            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>
-            {
-                Data = _companyService.Search()
-            };
-
-            return responseEntityBuilder.Build();
         }
 
         [HttpPost]
@@ -44,16 +31,6 @@ namespace StackJudge.Controllers
             {
                 ResponseStatusCode = HttpStatusCode.Created
             };
-
-            return responseEntityBuilder.Build();
-        }
-
-        [HttpDelete, Route("{companyId}")]
-        public ResponseEntity<ResponseData<object>> Delete(int companyId)
-        {
-            _companyService.Delete(companyId);
-
-            var responseEntityBuilder = new ResponseEntityBuilder<object>();
 
             return responseEntityBuilder.Build();
         }
