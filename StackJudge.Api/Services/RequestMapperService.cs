@@ -1,4 +1,6 @@
-﻿using StackJudge.Requests;
+﻿using System;
+using StackJudge.Requests;
+using StackJudge.Requests.Stack;
 using StackJudgeCore.Company.Entities;
 
 namespace StackJudge.Services
@@ -21,6 +23,20 @@ namespace StackJudge.Services
                 address.PingLong,
                 address.ManualPingLat,
                 address.ManualPingLong
+            );
+        }
+
+        public static Stack MapToEntity(PostRequest request, DateTime now, int userId)
+        {
+            return new Stack(
+                null,
+                request.CompanyId,
+                request.ParentId,
+                request.TypeId,
+                request.Name,
+                request.MembersOnStackId,
+                now,
+                userId
             );
         }
     }

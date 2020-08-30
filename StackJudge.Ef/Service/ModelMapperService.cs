@@ -41,5 +41,19 @@ namespace StackJudgeEf.Service
                 CreatedBy = 1
             };
         }
+
+        public static StackModel MapToModel(Stack stack)
+        {
+            return new StackModel
+            {
+                Id = stack.Id,
+                CompanyId = stack.CompanyId,
+                ParentId = stack.ParentId,
+                Name = stack.Name,
+                MembersOnStackId = stack.MembersOnStackId,
+                CreatedAt = stack.CreatedAt,
+                CreatedBy = stack.CreatedBy
+            };
+        }
     }
 }

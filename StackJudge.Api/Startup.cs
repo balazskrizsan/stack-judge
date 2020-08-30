@@ -35,6 +35,9 @@ namespace StackJudge
             services.AddScoped<IAddressService, AddressService>();
             services.AddScoped<IAddressRepository, AddressRepository>();
 
+            services.AddScoped<IStackService, StackService>();
+            services.AddScoped<IStackRepository, StackRepository>();
+
             services.AddScoped<ITransactionRunnerService, TransactionRunnerService>();
             
             services.AddMvc(options =>
