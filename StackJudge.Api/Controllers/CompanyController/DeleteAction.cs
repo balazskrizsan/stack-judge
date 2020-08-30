@@ -19,7 +19,7 @@ namespace StackJudge.Controllers.CompanyController
         [HttpDelete, Route("{companyId}")]
         public ResponseEntity<ResponseData<object>> Delete(int companyId)
         {
-            _companyService.Delete(companyId);
+            _companyService.Delete(companyId, 1);
 
             var responseEntityBuilder = new ResponseEntityBuilder<object>();
 

@@ -29,6 +29,12 @@ namespace StackJudgeCore.Company.Entities
         [ReadOnly(true)]
         public Decimal ManualPinLat { get; }
 
+        [ReadOnly(true)]
+        public DateTime CreatedAt { get; }
+
+        [ReadOnly(true)]
+        public int CreatedBy { get; }
+
         public Address(
             int? id,
             int? companyId,
@@ -37,7 +43,9 @@ namespace StackJudgeCore.Company.Entities
             decimal pinLong,
             decimal pinLat,
             decimal manualPinLong,
-            decimal manualPinLat
+            decimal manualPinLat,
+            DateTime createdAt,
+            int createdBy
         )
         {
             Id = id;
@@ -48,6 +56,8 @@ namespace StackJudgeCore.Company.Entities
             PinLat = pinLat;
             ManualPinLong = manualPinLong;
             ManualPinLat = manualPinLat;
+            CreatedAt = createdAt;
+            CreatedBy = createdBy;
         }
     }
 }

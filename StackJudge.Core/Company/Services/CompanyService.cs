@@ -51,14 +51,16 @@ namespace StackJudgeCore.Company.Services
                     address.PinLong,
                     address.PinLat,
                     address.ManualPinLong,
-                    address.ManualPinLat
+                    address.ManualPinLat,
+                    address.CreatedAt,
+                    address.CreatedBy
                 )
             );
 
             return true;
         }
 
-        public void Delete(int companyId)
+        public void Delete(int companyId, int userId)
         {
             _companyRepository.Delete(companyId);
         }

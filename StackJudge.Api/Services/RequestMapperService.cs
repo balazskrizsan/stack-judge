@@ -7,12 +7,12 @@ namespace StackJudge.Services
 {
     public static class RequestMapperService
     {
-        public static Company MapToEntity(CompanyPostRequest company)
+        public static Company MapToEntity(CompanyPostRequest company, DateTime now, int userId)
         {
-            return new Company(null, company.Name, company.AddressId, company.CompanySize, company.ItSize);
+            return new Company(null, company.Name, company.AddressId, company.CompanySize, company.ItSize, now, userId);
         }
 
-        public static Address MapToEntity(AddressPostRequest address)
+        public static Address MapToEntity(AddressPostRequest address, DateTime now, int userId)
         {
             return new Address(
                 null,
@@ -22,7 +22,9 @@ namespace StackJudge.Services
                 address.PingLat,
                 address.PingLong,
                 address.ManualPingLat,
-                address.ManualPingLong
+                address.ManualPingLong,
+                now,
+                userId
             );
         }
 

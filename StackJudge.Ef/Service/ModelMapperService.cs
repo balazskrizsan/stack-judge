@@ -8,7 +8,15 @@ namespace StackJudgeEf.Service
     {
         public static Company MapFromModel(CompanyModel company)
         {
-            return new Company(company.Id, company.Name, company.AddressId, company.CompanySize, company.ItSize);
+            return new Company(
+                company.Id,
+                company.Name,
+                company.AddressId,
+                company.CompanySize,
+                company.ItSize,
+                company.CreatedAt,
+                company.CreatedBy
+            );
         }
 
         public static CompanyModel MapToModel(Company company)
@@ -20,8 +28,8 @@ namespace StackJudgeEf.Service
                 AddressId = company.AddressId,
                 CompanySize = company.CompanySize,
                 ItSize = company.ItSize,
-                CreatedAt = DateTime.Now,
-                CreatedBy = 1
+                CreatedAt = company.CreatedAt,
+                CreatedBy = company.CreatedBy
             };
         }
 
@@ -37,8 +45,8 @@ namespace StackJudgeEf.Service
                 PinLat = address.PinLat,
                 ManualPinLong = address.ManualPinLong,
                 ManualPinLat = address.ManualPinLat,
-                CreatedAt = DateTime.Now,
-                CreatedBy = 1
+                CreatedAt = address.CreatedAt,
+                CreatedBy = address.CreatedBy
             };
         }
 
