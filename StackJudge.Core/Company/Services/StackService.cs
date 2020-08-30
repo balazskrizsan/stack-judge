@@ -1,4 +1,5 @@
-﻿using StackJudgeCore.Company.Entities;
+﻿using System.Collections.Generic;
+using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Repositories;
 
 namespace StackJudgeCore.Company.Services
@@ -15,6 +16,11 @@ namespace StackJudgeCore.Company.Services
         public void Create(Stack stack)
         {
             _stackRepository.Create(stack);
+        }
+
+        public List<RecursiveStack> RecursiveSearch(int companyId)
+        {
+            return _stackRepository.RecursiveSearch(companyId);
         }
     }
 }

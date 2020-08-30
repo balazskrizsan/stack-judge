@@ -63,5 +63,16 @@ namespace StackJudgeEf.Service
                 CreatedBy = stack.CreatedBy
             };
         }
+
+        public static RecursiveStack MapFromModel(RecursiveStackModel recursiveStack)
+        {
+            return new RecursiveStack(
+                recursiveStack.Id,
+                recursiveStack.Name,
+                recursiveStack.ParentId,
+                recursiveStack.Depth,
+                recursiveStack.Path
+            );
+        }
     }
 }
