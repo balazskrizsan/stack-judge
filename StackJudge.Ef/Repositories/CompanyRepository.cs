@@ -36,21 +36,14 @@ namespace StackJudgeEf.Repositories
                 throw new Exception("User creation exception.");
             }
 
-            return (int) newCompany.Id;
+            return newCompany.Id ?? 0;
         }
 
         public void Delete(int companyId)
         {
-            try
-            {
-                var company = _context.Companies.Single(c => c.Id == companyId);
-                _context.Companies.Remove(company);
-                _context.SaveChanges();
-            }
-            catch (InvalidOperationException e)
-            {
-                // Log: CompanyId not found: companyId
-            }
+            var company = _context.Companies.Single(c => c.Id == companyId);
+            _context.Companies.Remove(company);
+            _context.SaveChanges();
         }
     }
 }

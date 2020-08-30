@@ -38,7 +38,7 @@ namespace StackJudgeEf.Service
             return new AddressModel
             {
                 Id = address.Id,
-                CompanyId = (int) address.CompanyId,
+                CompanyId = address.CompanyId ?? 0,
                 RawAddress = address.RawAddress,
                 GoogleAddress = address.GoogleAddress,
                 PinLong = address.PinLong,
