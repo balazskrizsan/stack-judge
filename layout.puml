@@ -1,0 +1,124 @@
+﻿@startuml
+package "Access Points" {
+    package "SJ.Api" {
+        class CompanyApiController
+        object ApiDiSetup
+    }
+    package "SJ.Scheduled" {
+        class CompanyScheduledController
+        object ScheduledDiSetup
+    }
+}
+
+package "SJ.Core" {
+    interface ICompanyService
+    interface ICompanyRepository
+    interface IUserService
+    class CompanyScheduledService implements ICompanyService
+    class CompanyEntity
+    class CompanyApiService implements ICompanyService
+    class UserEntity
+}
+
+package "SJ.MemberCenter - GDPR isolation" {
+    class UserService implements IUserService
+    class UserScheduledService implements IUserService
+    package MemberDb <<Database>> {
+      class UserRepository
+    }
+}
+
+package "SJ.CoreDb" {
+    package CoreDb <<Database>> {
+        class CompanyRepository implements ICompanyRepository
+    }
+}
+
+CompanyApiController --> CompanyApiService
+CompanyApiController <-- CompanyApiService
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyScheduledController --> CompanyScheduledService
+CompanyScheduledController <-- CompanyScheduledService
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyScheduledService --> CompanyRepository
+CompanyScheduledService <-- CompanyRepository
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+CompanyScheduledService --> UserScheduledService
+CompanyScheduledService <-- UserScheduledService
+note right on link #lightblue
+Response:
+UserEntity[]
+UserEntity
+boolean
+end note
+
+CompanyApiService --> UserService
+CompanyApiService <-- UserService
+note right on link #lightblue
+Response:
+UserEntity[]
+UserEntity
+boolean
+end note
+
+CompanyApiService --> CompanyRepository
+CompanyApiService <-- CompanyRepository
+note right on link #lightblue
+Response:
+CompanyEntity[]
+end note
+
+UserService --> UserRepository
+UserService <-- UserRepository
+note right on link #lightblue
+Response:
+UserEntity[]
+UserEntity
+end note
+
+UserScheduledService --> UserRepository
+UserScheduledService <-- UserRepository
+note right on link #lightblue
+Response:
+UserEntity[]
+UserEntity
+end note
+
+CompanyApiController       : HTTP: GET?page=\d+
+CompanyScheduledController : Job
+
+CompanyApiService       : Search(int page)
+CompanyScheduledService : Search()
+
+IUserService : IsLoggedIn(): boolean
+IUserService : GetCurrentUser(): UserEntity
+IUserService : GetUserById(int id): UserEntity
+IUserService : SearchUser(): UserEntity[]
+UserService : IsLoggedIn(): boolean
+UserService : GetCurrentUser(): IUserEntity
+UserService : GetUserById(int id): IUserEntity
+UserScheduledService : IsLoggedIn(): boolean
+UserScheduledService : GetCurrentUser(): IUserEntity
+UserScheduledService : GetUserById(int id): IUserEntity
+
+CompanyRepository : Search(int page, int limit)
+
+ApiDiSetup       : ICompanyService -> CompanyApiService
+ApiDiSetup       : ICompanyRepository -> CompanyRepository
+ApiDiSetup       : IUserService -> UserService
+ScheduledDiSetup : ICompanyService -> CompanyScheduledService
+ScheduledDiSetup : ICompanyRepository -> CompanyRepository
+ScheduledDiSetup : IUserService -> UserScheduledService
+@enduml
