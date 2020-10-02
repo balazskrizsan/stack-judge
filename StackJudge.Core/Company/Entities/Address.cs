@@ -5,57 +5,43 @@ namespace StackJudgeCore.Company.Entities
 {
     public class Address
     {
-        [ReadOnly(true)]
-        public int? Id { get; }
+        [ReadOnly(true)] public int? Id { get; }
 
-        [ReadOnly(true)]
-        public int? CompanyId { get; }
+        [ReadOnly(true)] public int? CompanyId { get; }
 
-        [ReadOnly(true)]
-        public string RawAddress { get; }
+        [ReadOnly(true)] public string FullAddress { get; }
 
-        [ReadOnly(true)]
-        public string GoogleAddress { get; }
+        [ReadOnly(true)] public Decimal MarkerLat { get; }
 
-        [ReadOnly(true)]
-        public Decimal PinLong { get; }
+        [ReadOnly(true)] public Decimal MarkerLng { get; }
 
-        [ReadOnly(true)]
-        public Decimal PinLat { get; }
+        [ReadOnly(true)] public Decimal ManualMarkerLat { get; }
 
-        [ReadOnly(true)]
-        public Decimal ManualPinLong { get; }
+        [ReadOnly(true)] public Decimal ManualMarkerLng { get; }
 
-        [ReadOnly(true)]
-        public Decimal ManualPinLat { get; }
+        [ReadOnly(true)] public DateTime CreatedAt { get; }
 
-        [ReadOnly(true)]
-        public DateTime CreatedAt { get; }
-
-        [ReadOnly(true)]
-        public int CreatedBy { get; }
+        [ReadOnly(true)] public int CreatedBy { get; }
 
         public Address(
             int? id,
             int? companyId,
-            string rawAddress,
-            string googleAddress,
-            decimal pinLong,
-            decimal pinLat,
-            decimal manualPinLong,
-            decimal manualPinLat,
+            string fullAddress,
+            decimal markerLat,
+            decimal markerLng,
+            decimal manualMarkerLat,
+            decimal manualMarkerLng,
             DateTime createdAt,
             int createdBy
         )
         {
             Id = id;
             CompanyId = companyId;
-            RawAddress = rawAddress;
-            GoogleAddress = googleAddress;
-            PinLong = pinLong;
-            PinLat = pinLat;
-            ManualPinLong = manualPinLong;
-            ManualPinLat = manualPinLat;
+            FullAddress = fullAddress;
+            MarkerLat = markerLat;
+            MarkerLng = markerLng;
+            ManualMarkerLat = manualMarkerLat;
+            ManualMarkerLng = manualMarkerLng;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
         }

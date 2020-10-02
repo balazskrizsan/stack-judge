@@ -17,6 +17,7 @@ namespace StackJudge
 {
     public class Startup
     {
+        public readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +28,11 @@ namespace StackJudge
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>  
+            {  
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());  
+            }); 
+            
             services.AddControllers();
 
             services.AddScoped<ICompanyService, CompanyService>();
@@ -64,9 +70,11 @@ namespace StackJudge
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowCredentials());  
 
             app.UseAuthorization();
 

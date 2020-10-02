@@ -13,23 +13,20 @@ namespace StackJudgeEf.Model
         [Column("company_id")]
         public int CompanyId { get; set; }
 
-        [Column("raw_address")]
-        public string RawAddress { get; set; }
+        [Column("full_address")]
+        public string FullAddress { get; set; }
 
-        [Column("google_address")]
-        public string GoogleAddress { get; set; }
+        [Column("marker_lat")]
+        public Decimal MarkerLat { get; set; }
 
-        [Column("pin_long")]
-        public Decimal PinLong { get; set; }
+        [Column("marker_lng")]
+        public Decimal MarkerLng { get; set; }
 
-        [Column("pin_lat")]
-        public Decimal ManualPinLat { get; set; }
+        [Column("manual_marker_lat")]
+        public Decimal ManualMarkerLat { get; set; }
 
-        [Column("manual_pin_long")]
-        public Decimal ManualPinLong { get; set; }
-
-        [Column("manual_pin_lat")]
-        public Decimal PinLat { get; set; }
+        [Column("manual_marker_lng")]
+        public Decimal ManualMarkerLng { get; set; }
 
         [Column("created_at")]
         public DateTime CreatedAt { get; set; }

@@ -11,7 +11,6 @@ namespace StackJudgeEf.Service
             return new Company(
                 company.Id,
                 company.Name,
-                company.AddressId,
                 company.CompanySize,
                 company.ItSize,
                 company.CreatedAt,
@@ -25,7 +24,6 @@ namespace StackJudgeEf.Service
             {
                 Id = company.Id,
                 Name = company.Name,
-                AddressId = company.AddressId,
                 CompanySize = company.CompanySize,
                 ItSize = company.ItSize,
                 CreatedAt = company.CreatedAt,
@@ -39,12 +37,11 @@ namespace StackJudgeEf.Service
             {
                 Id = address.Id,
                 CompanyId = address.CompanyId ?? 0,
-                RawAddress = address.RawAddress,
-                GoogleAddress = address.GoogleAddress,
-                PinLong = address.PinLong,
-                PinLat = address.PinLat,
-                ManualPinLong = address.ManualPinLong,
-                ManualPinLat = address.ManualPinLat,
+                FullAddress = address.FullAddress,
+                MarkerLat = address.MarkerLat,
+                MarkerLng = address.MarkerLng,
+                ManualMarkerLat = address.ManualMarkerLat,
+                ManualMarkerLng = address.ManualMarkerLng,
                 CreatedAt = address.CreatedAt,
                 CreatedBy = address.CreatedBy
             };

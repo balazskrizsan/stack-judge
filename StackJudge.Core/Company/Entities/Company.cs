@@ -12,9 +12,6 @@ namespace StackJudgeCore.Company.Entities
         public string Name { get; }
 
         [ReadOnly(true)]
-        public int AddressId { get; }
-
-        [ReadOnly(true)]
         public int CompanySize { get; }
 
         [ReadOnly(true)]
@@ -29,7 +26,6 @@ namespace StackJudgeCore.Company.Entities
         public Company(
             int? id,
             string name,
-            int addressId,
             int companySize,
             int itSize,
             DateTime createdAt,
@@ -38,7 +34,6 @@ namespace StackJudgeCore.Company.Entities
         {
             Id = id;
             Name = name;
-            AddressId = addressId;
             CompanySize = companySize;
             ItSize = itSize;
             CreatedAt = createdAt;

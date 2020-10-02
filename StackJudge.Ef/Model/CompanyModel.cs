@@ -13,13 +13,10 @@ namespace StackJudgeEf.Model
         [Column("name")]
         public string Name { get; set; }
 
-        [Column("address_id")]
-        public int AddressId { get; set; }
-
-        [Column("company_size")]
+        [Column("company_size_id")]
         public int CompanySize { get; set; }
 
-        [Column("it_size")]
+        [Column("it_size_id")]
         public int ItSize { get; set; }
 
         [Column("created_at")]

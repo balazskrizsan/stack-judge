@@ -9,7 +9,7 @@ namespace StackJudge.Services
     {
         public static Company MapToEntity(CompanyPostRequest company, DateTime now, int userId)
         {
-            return new Company(null, company.Name, company.AddressId, company.CompanySize, company.ItSize, now, userId);
+            return new Company(null, company.Name, company.CompanySizeId, company.ItSizeId, now, userId);
         }
 
         public static Address MapToEntity(AddressPostRequest address, DateTime now, int userId)
@@ -17,12 +17,11 @@ namespace StackJudge.Services
             return new Address(
                 null,
                 null,
-                address.RawAddress,
-                address.GoogleAddress,
-                address.PingLat,
-                address.PingLong,
-                address.ManualPingLat,
-                address.ManualPingLong,
+                address.FullAddress,
+                address.MarkerLat,
+                address.MarkerLng,
+                address.ManualMarkerLat,
+                address.ManualMarkerLng,
                 now,
                 userId
             );
