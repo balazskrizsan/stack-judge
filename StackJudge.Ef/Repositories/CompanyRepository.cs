@@ -24,6 +24,13 @@ namespace StackJudgeEf.Repositories
                 .ToList();
         }
 
+        public Company Get(int id)
+        {
+            return ModelMapperService.MapFromModel(
+                _context.Companies.Select(company => company).First(company => company.Id.Equals(id))
+            );
+        }
+
         public int Create(Company company)
         {
             var newCompany = ModelMapperService.MapToModel(company);

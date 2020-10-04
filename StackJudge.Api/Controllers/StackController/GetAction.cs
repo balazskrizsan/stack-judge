@@ -18,7 +18,8 @@ namespace StackJudge.Controllers.StackController
             _stackService = stackService;
         }
 
-        [HttpGet, Route("{companyId}")]
+        [HttpGet]
+        [Route("{companyId}")]
         public ResponseEntity<ResponseData<List<RecursiveStack>>> Get(int companyId)
         {
             var responseEntityBuilder = new ResponseEntityBuilder<List<RecursiveStack>>

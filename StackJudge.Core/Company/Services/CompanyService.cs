@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Repositories;
 
@@ -24,6 +25,11 @@ namespace StackJudgeCore.Company.Services
         public List<Entities.Company> Search()
         {
             return _companyRepository.Search();
+        }
+
+        public Entities.Company Get(int id)
+        {
+            return _companyRepository.Get(id);
         }
 
         public int Create(Entities.Company company)

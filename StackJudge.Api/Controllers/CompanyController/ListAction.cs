@@ -8,23 +8,22 @@ using StackJudgeCore.Company.Services;
 namespace StackJudge.Controllers.CompanyController
 {
     [ApiController]
-    [Route("/company/")]
-    public class GetAction
+    [Route("/company")]
+    public class ListAction
     {
         private readonly ICompanyService _companyService;
 
-        public GetAction(ICompanyService companyService)
+        public ListAction(ICompanyService companyService)
         {
             _companyService = companyService;
         }
 
         [HttpGet]
-        [Route("{companyId}")]
-        public ResponseEntity<ResponseData<Company>> Get(int companyId)
+        public ResponseEntity<ResponseData<List<Company>>> Get()
         {
-            var responseEntityBuilder = new ResponseEntityBuilder<Company>
+            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>
             {
-                Data = _companyService.Get(companyId)
+                Data = _companyService.Search()
             };
 
             return responseEntityBuilder.Build();
