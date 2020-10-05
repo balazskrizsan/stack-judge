@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StackJudge.Builders;
+using StackJudge.Requests.Company;
+using StackJudge.Response.Company;
 using StackJudge.ValueObjects;
-using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Services;
 
 namespace StackJudge.Controllers.CompanyController
@@ -20,11 +20,15 @@ namespace StackJudge.Controllers.CompanyController
 
         [HttpGet]
         [Route("{companyId}")]
-        public ResponseEntity<ResponseData<Company>> Get(int companyId)
+        public ResponseEntity<ResponseData<GetResponse>> Get(int companyId, [FromQuery] GetQParams getQParams)
         {
-            var responseEntityBuilder = new ResponseEntityBuilder<Company>
+            var responseEntityBuilder = new ResponseEntityBuilder<GetResponse>
             {
-                Data = _companyService.Get(companyId)
+                Data = new GetResponse
+                {
+                    Company = _companyService.Get(companyId),
+                    RequestRelationIds = getQParams.RequestRelationIds
+                }
             };
 
             return responseEntityBuilder.Build();
