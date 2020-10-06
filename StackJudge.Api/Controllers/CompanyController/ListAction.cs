@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using StackJudge.Builders;
+using StackJudge.Response.Company;
 using StackJudge.ValueObjects;
 using StackJudgeCore.Company.Entities;
 using StackJudgeCore.Company.Services;
@@ -19,11 +20,16 @@ namespace StackJudge.Controllers.CompanyController
         }
 
         [HttpGet]
-        public ResponseEntity<ResponseData<List<Company>>> Get()
+        public ResponseEntity<ResponseData<ListResponse>> Get()
         {
-            var responseEntityBuilder = new ResponseEntityBuilder<List<Company>>
+            List<Company> companies = _companyService.Search();
+
+            var responseEntityBuilder = new ResponseEntityBuilder<ListResponse>
             {
-                Data = _companyService.Search()
+                Data = new ListResponse
+                {
+                    Companies = companies
+                }
             };
 
             return responseEntityBuilder.Build();
